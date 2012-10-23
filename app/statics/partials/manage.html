@@ -1,0 +1,10 @@
+<h1>Manage questions</h1>
+
+<ul class="questions">
+  <li ng-repeat="question in questions">
+    <div ng-bind="question.text" contenteditable="true" id="question-{{ question.id }}"></div>
+    <div ng-click="preview(question)">P</div>
+    <div ng-click="edit(question)">E</div>
+    <div ng-click="remove(question)">D</div>
+  </li>
+</ul>

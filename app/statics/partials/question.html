@@ -1,0 +1,7 @@
+<h1>Posez votre question</h1>
+
+<textarea ng-model="newQuestion" placeholder="saisissez votre question"></textarea>
+
+<br>
+
+<button ng-disabled="!newQuestion || newQuestion.length < 10" ng-click="submit()">Envoyer</button>
