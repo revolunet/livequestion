@@ -1,13 +1,13 @@
 <h1>Manage questions ({{ questions.length }})</h1>
 
-<a href="/">ajouter une question</a>
+<a href="/#/ask">ajouter une question</a>
 &nbsp;
 &nbsp;
 <a  ng-click="refresh()">actualiser</a>
 
 <ul class="questions">
   <li id='question-{{ question.id }}' ng-repeat="question in questions">
-    <input ng-model="question.text" ng-model-onblur ng-change="update(question)"/>
+    <textarea ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
     <div ng-click="preview(question)">P</div>
     <div ng-click="remove(question)">D</div>
   </li>

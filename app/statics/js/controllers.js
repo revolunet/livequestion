@@ -12,7 +12,12 @@ function QuestionCtrl($scope, $location, Question) {
     $scope.submit = function() {
         $question = new Question({text: $scope.newQuestion});
         $question.$save();
-        $location.path( "/thanks" );
+        if ($location.path() == '/ask') {
+            $location.path( "/manage" );
+            Question.query();
+        } else {
+            $location.path( "/thanks" );
+        }
     };
     // go back to the question form
     $scope.goback = function() {
@@ -21,27 +26,8 @@ function QuestionCtrl($scope, $location, Question) {
 }
 
 
-function ManageCtrl($scope, $timeout, Question) {
+function ManageCtrl($scope, Question) {
     $scope.questions = Question.query();
-    
-    // if (!$scope.polling) {
-    //     setInterval(function(){
-    //         $scope.$apply(function() {
-    //            console.log('interval', this);
-    //            var res = Question.query(function(items) {
-    //             console.log($scope.questions);
-    //             console.log(items);
-    //                 angular.forEach(items, function(item, idx) {
-                          
-    //                       //console.log($scope.questions);
-    //                 });
-    //                 //if (res!=$scope.questions) $scope.questions = res;
-    //            });
-    //         });
-    //     }, 1000);
-    // }
-
-    // $scope.polling = true;
 
     $scope.refresh = function() {
         $scope.questions = Question.query();
@@ -62,6 +48,7 @@ function ManageCtrl($scope, $timeout, Question) {
             question.$remove(function(e) {
                 //Question.query()
                 // view should be updated...
+                $scope.questions = Question.query();
                 //document.getElementById('question-' + question.id).style.display = 'none';
            });
         }

@@ -3,6 +3,7 @@ angular.module('liveQuestion', ['questionServices'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: '/statics/partials/question.html', controller: QuestionCtrl});
+    $routeProvider.when('/ask', {templateUrl: '/statics/partials/question.html', controller: QuestionCtrl});
     $routeProvider.when('/thanks', {templateUrl: '/statics/partials/thanks.html', controller: QuestionCtrl});
     $routeProvider.when('/manage', {templateUrl: '/statics/partials/manage.html', controller: ManageCtrl});
     $routeProvider.when('/preview/:id', {templateUrl: '/statics/partials/preview.html', controller: PreviewCtrl});
@@ -28,4 +29,4 @@ angular.module('liveQuestion', ['questionServices'])
         }
     };
   });
-  
+
