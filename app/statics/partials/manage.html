@@ -1,14 +1,21 @@
-<h1>Manage questions ({{ questions.length }})</h1>
 
-<a href="/#/ask">ajouter une question</a>
-&nbsp;
-&nbsp;
-<a  ng-click="refresh()">actualiser</a>
+<div class="manage">
 
-<ul class="questions">
-  <li id='question-{{ question.id }}' ng-repeat="question in questions">
-    <textarea ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
-    <div ng-click="preview(question)">P</div>
-    <div ng-click="remove(question)">D</div>
-  </li>
-</ul>
+    <h1>{{ questions.length }} Questions en attente</h1>
+
+    <button class="btn btn-primary" ng-click="ask()"><i class="icon-plus icon-white"></i> Ajouter une question</button>
+    <button class="btn btn-primary" ng-click="refresh()"><i class="icon-retweet icon-white"></i> Actualiser</button>
+    <br><br>
+    <table id="questions" class="table table-striped">
+        <tr id='question-{{ question.id }}' ng-repeat="question in questions">
+            <td align="center">
+                <textarea autofocus ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
+            </td>
+            <td width="120" align="center">
+                <button class="btn btn-block" ng-class="clicked && 'btn-success' || 'btn-primary'" ng-click="clicked=1;preview(question)"><i class="icon-share icon-white"></i> Afficher</button>
+                <button class="btn btn-danger btn-block"  ng-click="remove(question)"><i class="icon-trash icon-white"></i> Supprimer</button>
+            </td>
+      </tr>
+    </table>
+
+</div>

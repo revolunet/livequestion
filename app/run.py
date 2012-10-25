@@ -27,11 +27,13 @@ def save_questions(questions):
 
 def add_question(text):
     q = get_questions()
-    q.append({
+    question = {
         'id': get_random_id(),
         'text': text
-    })
+    }
+    q.append(question)
     save_questions(q)
+    return question
 
 
 def get_random_id():
@@ -73,7 +75,7 @@ def statics(filepath):
 def questions():
     if request.method == 'POST':
         data = request.json
-        add_question(data.get('text', ''))
+        return add_question(data.get('text', ''))
     return static_file('questions.json', root=BASE_DIR)
 
 

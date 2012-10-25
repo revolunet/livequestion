@@ -2,24 +2,39 @@
 <html lang="en" ng-app="liveQuestion">
 <head>
   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width" />
   <title>LiveQuestion</title>
-  <!-- <link rel="stylesheet" href="css/app.css"/> -->
+  <link rel="stylesheet" href="/statics/lib/bootstrap/css/bootstrap.min.css"/>
+  <style>
+  * {
+    font-family: Trebuchet, Helvetica, Verdana, Arial;
+  }
+  div.ask {
+    width: 100%;
+    text-align:center;
+  }
+  div.ask textarea {
+    width:60%;
+    height:250px;
+    font-size:40px;
+    padding:20px;
+  }
+  div.manage table#questions  textarea {
+    width: 95%;
+    height:50px;
+    font-size:20px;
+    margin-bottom:0px;
+  }
+  div.preview div.bigtext {
+    width: 100%;
+    height: 100%;
+    margin: 50px 0px;
+    text-align: center;
+    vertical-align: middle; 
+  }
+  </style>
 </head>
 <body>
-
-<!--
-  <ul class="menu" ng-show="$location.path()!='/';" style="display:none">
-    <li><a href="#/">ask</a></li>
-    <li><a href="#/manage">manage</a></li>
-    <li><a href="#/preview">preview</a></li>
-  </ul>
-
-<pre>
-TODO : 
- - styles
- - quid auto update Question resource in scopes ? manage->ask->manage not updated
-</pre>
--->
   <div ng-view></div>
 
   <script src="/statics/lib/jquery.min.js"></script>
