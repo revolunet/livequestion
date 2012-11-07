@@ -25,11 +25,12 @@ def save_questions(questions):
     json.dump(questions, open(QUESTIONS_FILE, 'w'))
 
 
-def add_question(text):
+def add_question(text, theme='question'):
     q = get_questions()
     question = {
         'id': get_random_id(),
-        'text': text
+        'text': text,
+        'theme': theme
     }
     q.append(question)
     save_questions(q)
@@ -75,7 +76,7 @@ def statics(filepath):
 def questions():
     if request.method == 'POST':
         data = request.json
-        return add_question(data.get('text', ''))
+        return add_question(data.get('text', ''), data.get('theme', ''))
     return static_file('questions.json', root=BASE_DIR)
 
 

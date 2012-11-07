@@ -6,20 +6,56 @@
 //}
 
 
-// user page with question and thanks
-function QuestionCtrl($scope, $location, Question) {
-    // submit a new question, display the thanks page
-    $scope.submit = function() {
-        question = new Question({text: $scope.newQuestion});
-        question.$save();
-        $location.path( "/thanks" );
+function HomeCtrl($scope, $location, Question) {
+    $scope.question = function() {
+        $location.path( "/question" );
     };
-    // go back to the question form
-    $scope.goback = function() {
-        $location.path( "/" );
+    $scope.synthese = function() {
+        $location.path( "/synthèse" );
     };
 }
 
+// user page with question and thanks
+function QuestionCtrl($scope, $location, Question) {
+    // submit a new question, display the thanks page
+    if (!$scope.questionType) $scope.questionType = 'question';
+    if (!$scope.questionHelp) $scope.questionHelp = 'Posez votre question';
+    if (!$scope.theme) $scope.theme = 'question';
+    $scope.submit = function() {
+        question = new Question({text: $scope.newQuestion, theme: $scope.theme});
+        question.$save();
+        $location.path( "/thanks/" + $scope.questionType);
+    };
+    // go home
+    $scope.home = function() {
+        $location.path( "/" );
+    };
+
+}
+
+// user page with question and thanks
+function SyntheseCtrl($scope, $location, Question) {
+    $scope.questionType = 'synthèse';
+    $scope.questionHelp = 'Saisissez votre synthèse';
+    $scope.themes = [
+        'Concurrence - groupe 1',
+        'Concurrence - groupe 2',
+        'Technique',
+        'Ressources humaines',
+        'Commerce',
+        'Finance'
+    ];
+    $scope.theme = $scope.themes[0];
+    return QuestionCtrl($scope, $location, Question);
+}
+
+function ThanksCtrl($scope, $location, $routeParams) {
+    $scope.questionType = $routeParams.questionType;
+    // go back
+    $scope.goback = function() {
+        $location.path( "/" + $scope.questionType );
+    };
+}
 
 function ManageCtrl($scope, $location, Question) {
 

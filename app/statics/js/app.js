@@ -2,8 +2,10 @@
 angular.module('liveQuestion', ['questionServices'])
 
   .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {templateUrl: '/statics/partials/question.html', controller: QuestionCtrl});
-    $routeProvider.when('/thanks', {templateUrl: '/statics/partials/thanks.html', controller: QuestionCtrl});
+    $routeProvider.when('/', {templateUrl: '/statics/partials/homechoice.html', controller: HomeCtrl});
+    $routeProvider.when('/question', {templateUrl: '/statics/partials/question.html', controller: QuestionCtrl});
+    $routeProvider.when('/synthèse', {templateUrl: '/statics/partials/question.html', controller: SyntheseCtrl});
+    $routeProvider.when('/thanks/:questionType', {templateUrl: '/statics/partials/thanks.html', controller: ThanksCtrl});
     $routeProvider.when('/manage', {templateUrl: '/statics/partials/manage.html', controller: ManageCtrl});
     $routeProvider.when('/preview/:id', {templateUrl: '/statics/partials/preview.html', controller: PreviewCtrl});
     $routeProvider.otherwise({redirectTo: '/'});

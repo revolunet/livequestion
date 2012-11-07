@@ -1,13 +1,17 @@
+
+
+
 <div class="ask">
+    <div class="linkhome" ng-click="home()">Retour accueil</div>
 
-    <h1>Posez votre question :</h1>
+    <div class="choixtheme" ng-show="questionType=='synthèse'">
+        <div class="tick">&nbsp;</div> Thème : <select ng-model="theme" required="true" ng-options="value for value in themes" ></select>
+    </div>
 
-    <textarea ng-model="newQuestion"></textarea>
+    <textarea class="whitebordered" ng-model="newQuestion" placeholder="{{ questionHelp }}..."></textarea>
 
-    <br>
-
-    <button class="btn btn-large btn-success" ng-disabled="!newQuestion || newQuestion.length < 10" ng-click="submit()">
-        <i class="icon-white icon-ok"></i> Soumettre la question
+    <button class="btn btn-large btn-darkgrey" ng-click="submit()">
+        <i class="icon-white icon-ok"></i> ENVOYER
     </button>
 
 </div>

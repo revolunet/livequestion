@@ -11,16 +11,110 @@
   * {
     font-family: Trebuchet, Helvetica, Verdana, Arial;
   }
-  div.ask {
-    width: 100%;
+  html {
+    width:100%; 
+    height:100%
+  }
+  body {
+    background-image: url(/statics/img/fond.gif);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    width:100%; 
+    height:100%;
+    margin:0;
+  }
+  footer {
+    height:51px;
+    position:absolute;
+    bottom:30px;
+    background-image: url(/statics/img/vibration.png);
+    background-repeat: no-repeat;
+    background-position: middle left;
+    width:100%;
+    text-align:right;
+    
+  }
+  footer img {
+    margin-right:40px;
+  }
+
+  .whitebordered {
+    background:white;
+    border:5px solid #ddd;
+    box-shadow: 0 0 8px #ccc;
+  }
+
+  .btn-darkgrey {
+    background-image:-webkit-linear-gradient(top, #ccc, #777);
+    color: white;
+    font-weight:bold;
+    text-shadow: none;
+    border:2px solid #666;
+    border-radius:2px;
+    margin-top: 0px;
+  }
+  .btn-darkgrey:hover{
+    background-color: #777;
+    color: white;
+  }
+  
+  /* homepage */
+  div.home {
+    width:100%;
     text-align:center;
+    padding-top:200px;
   }
+  div.home button {
+    width:220px;
+    height:110px;
+    margin:20px;
+    cursor:pointer;
+  }
+
+  /* question/synthese */
+  div.ask,
+  div.thanks {
+    width:800px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  div.linkhome {
+    color: darkgrey;
+    text-align:left;
+    margin-bottom: 80px;
+    padding-top:20px;
+    font-size:12px;
+    font-weight: bold;
+    cursor:pointer;
+  }
+
   div.ask textarea {
-    width:60%;
-    height:250px;
-    font-size:40px;
-    padding:20px;
+    width: 780px;
+    height: 350px;
+    font-size: 30px;
+    padding-top: 20px;
+    margin-bottom: 0px;
+    line-height: 30px;
+    resize: none;
   }
+  div.ask button {
+    width:100%;
+  }
+  div.choixtheme {
+    text-align: left;
+  }
+  div.tick{
+    background:silver;
+    height:4px;
+    width:30px;
+    display:inline-block;
+    margin-right:10px;
+    margin-bottom:3px;
+  } 
+
   div.manage table#questions  textarea {
     width: 95%;
     height:50px;
@@ -39,6 +133,8 @@
 <body>
   <div ng-view></div>
 
+  <footer><img src="/statics/img/logo.png"/></footer>
+
   <script src="/statics/lib/jquery.min.js"></script>
   <script src="/statics/lib/fittext.js"></script>
   <script src="/statics/lib/angular.js"></script>
@@ -46,7 +142,7 @@
   <script src="/statics/js/app.js"></script>
   <script src="/statics/js/controllers.js"></script>
   <script src="/statics/js/services.js"></script>
-
+  
 </body>
 </html>
  
