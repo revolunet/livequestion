@@ -1,14 +1,25 @@
 
 <div class="manage">
 
-    <h1>{{ questions.length }} Questions en attente</h1>
+    <h1>{{ (questions|filter:themeFilter).length }} Réponse(s)</h1>
 
+    <!--
     <button class="btn btn-primary" ng-click="ask()"><i class="icon-plus icon-white"></i> Ajouter une question</button>
+    -->
     <button class="btn btn-primary" ng-click="refresh()"><i class="icon-retweet icon-white"></i> Actualiser</button>
+
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <button class="btn" ng-click="showQuestions()" ng-class="{active: questionType=='question'}">Questions</button>
+        <button class="btn" ng-click="showSyntheses()" ng-class="{active: questionType=='synthèse'}">Synthèses</button>
+      </div>
+    </div>
+
     <br><br>
     <table id="questions" class="table table-striped">
-        <tr id='question-{{ question.id }}' ng-repeat="question in questions">
+        <tr id='question-{{ question.id }}' ng-repeat="question in questions|filter:themeFilter">
             <td align="center">
+                <div ng-show="questionType!='question'" class="theme">{{ question.theme }}</div>
                 <textarea autofocus ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
             </td>
             <td width="120" align="center">

@@ -60,14 +60,39 @@ function ThanksCtrl($scope, $location, $routeParams) {
 function ManageCtrl($scope, $location, Question) {
 
     // initialise the questions list
+    $scope.questionType = "question";
     $scope.questions = Question.query();
 
-    $scope.ask = function() {
-        // create a new empty question and add it to the view
-        question = new Question({text: ''});
-        question.$save(function(e) {
-            $scope.questions.push(question);
-        });
+    // function filterQuestion() {
+    //     $scope.questions = Question.query();
+
+    // }
+    // filterQuestion();
+
+    // $scope.ask = function() {
+    //     // create a new empty question and add it to the view
+    //     question = new Question({text: ''});
+    //     question.$save(function(e) {
+    //         $scope.questions.push(question);
+    //     });
+    // };
+
+    $scope.showQuestions = function() {
+        $scope.questionType = 'question';
+       // $scope.questions = Question.query({theme: 'question'});
+    };
+
+    $scope.showSyntheses = function() {
+        $scope.questionType = 'synthèse';
+     //   $scope.questions = Question.query({theme: 'question'});
+    };
+
+    $scope.themeFilter = function(question) {
+        if (!question.theme || question.theme==='') return false;
+        var isQuestion = (question.theme == 'question');
+        if ($scope.questionType == 'question') return isQuestion;
+        else return !isQuestion;
+
     };
 
     $scope.refresh = function() {
@@ -100,4 +125,5 @@ function ManageCtrl($scope, $location, Question) {
 
 function PreviewCtrl($scope, $route, Question) {
     $scope.question = Question.get({id: $route.current.params.id});
+    
 }
