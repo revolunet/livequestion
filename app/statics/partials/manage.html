@@ -6,9 +6,10 @@
     <!--
     <button class="btn btn-primary" ng-click="ask()"><i class="icon-plus icon-white"></i> Ajouter une question</button>
     -->
-    <button class="btn btn-primary" ng-click="refresh()"><i class="icon-retweet icon-white"></i> Actualiser</button>
+    
 
     <div class="btn-toolbar">
+      <button class="btn btn-primary" ng-click="refresh()"><i class="icon-retweet icon-white"></i> Actualiser</button>
       <div class="btn-group">
         <button class="btn" ng-click="showQuestions()" ng-class="{active: questionType=='question'}">Questions</button>
         <button class="btn" ng-click="showSyntheses()" ng-class="{active: questionType=='synthèse'}">Synthèses</button>
@@ -23,8 +24,13 @@
                 <textarea autofocus ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
             </td>
             <td width="120" align="center">
-                <button class="btn btn-block" ng-class="clicked && 'btn-success' || 'btn-primary'" ng-click="clicked=1;preview(question)"><i class="icon-share icon-white"></i> Afficher</button>
-                <button class="btn btn-danger btn-block"  ng-click="remove(question)"><i class="icon-trash icon-white"></i> Supprimer</button>
+                <div ng-show="questionType=='synthèse'">
+                    <button class="btn btn-block" ng-class="clicked && 'btn-success' || 'btn-primary'" ng-click="clicked=1;preview(question)"><i class="icon-share icon-white"></i> Afficher</button>
+                    <button class="btn btn-danger btn-block"  ng-click="remove(question)"><i class="icon-trash icon-white"></i> Supprimer</button>
+                </div>
+                <div ng-show="questionType=='question'">
+                     <button ng-class="{true:'btn-success', false:'btn-danger'}[!!question.done]" class="btn btn-block"  ng-click="done(question)"><i ng-class="{true:'icon-ok', false:'icon-ok'}[!!question.done]"  class="icon-white"></i> Traitée</button>
+                </div>
             </td>
       </tr>
     </table>

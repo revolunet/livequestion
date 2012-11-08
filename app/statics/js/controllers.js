@@ -51,9 +51,11 @@ function SyntheseCtrl($scope, $location, Question) {
 
 function ThanksCtrl($scope, $location, $routeParams) {
     $scope.questionType = $routeParams.questionType;
-    // go back
     $scope.goback = function() {
         $location.path( "/" + $scope.questionType );
+    };
+     $scope.home = function() {
+        $location.path( "/" );
     };
 }
 
@@ -63,28 +65,12 @@ function ManageCtrl($scope, $location, Question) {
     $scope.questionType = "question";
     $scope.questions = Question.query();
 
-    // function filterQuestion() {
-    //     $scope.questions = Question.query();
-
-    // }
-    // filterQuestion();
-
-    // $scope.ask = function() {
-    //     // create a new empty question and add it to the view
-    //     question = new Question({text: ''});
-    //     question.$save(function(e) {
-    //         $scope.questions.push(question);
-    //     });
-    // };
-
     $scope.showQuestions = function() {
         $scope.questionType = 'question';
-       // $scope.questions = Question.query({theme: 'question'});
     };
 
     $scope.showSyntheses = function() {
         $scope.questionType = 'synthèse';
-     //   $scope.questions = Question.query({theme: 'question'});
     };
 
     $scope.themeFilter = function(question) {
@@ -102,6 +88,11 @@ function ManageCtrl($scope, $location, Question) {
 
     $scope.update = function(question) {
         // save the given question
+        question.$save();
+    };
+
+    $scope.done = function(question) {
+        question.done = true;
         question.$save();
     };
 

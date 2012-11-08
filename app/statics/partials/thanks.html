@@ -2,7 +2,10 @@
     <br>
     <h1>Votre {{ questionType }} a bien été envoyée !</h1>
     <br><br><br><br>
-    <button class="btn btn-large btn-success" ng-click="goback()">
-        <i class="icon-plus icon-white"></i>Envoyer une nouvelle  {{ questionType }}
+    <button ng-show="questionType == 'question'" class="btn btn-large btn-success" ng-click="goback()">
+        <i class="icon-plus icon-white"></i> Envoyer une nouvelle  {{ questionType }}
+    </button>
+    <button class="btn btn-large btn-success" ng-click="home()">
+        <i class="icon-home icon-white"></i> Retour accueil
     </button>
 </div>

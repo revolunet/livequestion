@@ -30,7 +30,8 @@ def add_question(text, theme='question'):
     question = {
         'id': get_random_id(),
         'text': text,
-        'theme': theme
+        'theme': theme,
+        'done': False
     }
     q.append(question)
     save_questions(q)
@@ -93,6 +94,7 @@ def questions2(id):
             elif request.method == 'POST':
                 data = request.json
                 q['text'] = data.get('text')
+                q['done'] = data.get('done', False)
                 res = q
     save_questions(questions)
             #print "REMOVE", id
