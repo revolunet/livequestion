@@ -99,7 +99,7 @@ function ManageCtrl($scope, $location, Question) {
     $scope.preview = function(question) {
         // preview given question in the preview popup
         var url = '/preview/' + question.id;
-        if (!window.winPreview || window.winPreview.closed) window.winPreview = window.open(url);
+        if (!window.winPreview || window.winPreview.closed) window.winPreview = window.open(url, 'preview');
         window.winPreview.document.location.hash = url;
        // window.winPreview.focus();
     };
