@@ -104,4 +104,4 @@ def questions2(id):
 
 
 bottle.debug(True)
-run(host='0.0.0.0', port=8080)
+run(server='paste', host='0.0.0.0', port=8080)
