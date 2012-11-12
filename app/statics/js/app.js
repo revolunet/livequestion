@@ -8,6 +8,7 @@ angular.module('liveQuestion', ['questionServices'])
     $routeProvider.when('/thanks/:questionType', {templateUrl: '/statics/partials/thanks.html', controller: ThanksCtrl});
     $routeProvider.when('/manage', {templateUrl: '/statics/partials/manage.html', controller: ManageCtrl});
     $routeProvider.when('/preview/:id', {templateUrl: '/statics/partials/preview.html', controller: PreviewCtrl});
+    $routeProvider.when('/export', {templateUrl: '/statics/partials/export.html', controller: ExportCtrl});
     $routeProvider.otherwise({redirectTo: '/'});
 
   }])

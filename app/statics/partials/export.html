@@ -1,0 +1,24 @@
+
+<div class="export">
+
+    <h1>Questions</h1>
+    <br><br>
+    <table id="questions" class="table table-striped">
+        <tr id='question-{{ question.id }}' ng-repeat="question in questions|filter:questionsFilter">
+            <td >
+                {{ question.text }}
+            </td>
+      </tr>
+    </table>
+
+    <h1>Synthèses</h1>
+    <br><br>
+    <table id="questions" class="table table-striped">
+        <tr id='question-{{ question.id }}' ng-repeat="question in questions|filter:synthesesFilter">
+            <td >
+                <h3>{{ question.theme }}</h3>
+                {{ question.text }}
+            </td>
+      </tr>
+    </table>
+</div>

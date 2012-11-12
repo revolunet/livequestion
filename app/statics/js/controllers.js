@@ -112,9 +112,23 @@ function ManageCtrl($scope, $location, Question) {
            });
         }
     };
+
+    $scope.download = function() {
+        window.open('/#/export');
+    };
+
+}
+
+function ExportCtrl($scope, Question) {
+    $scope.questions = Question.query();
+    $scope.questionsFilter = function(question, theme) {
+        if (question.theme && question.theme == 'question' && question.text !== '') return true;
+    };
+    $scope.synthesesFilter = function(question, theme) {
+        if (question.theme && question.theme !== '' && question.theme !== 'question'  && question.text !== '') return true;
+    };
 }
 
 function PreviewCtrl($scope, $route, Question) {
     $scope.question = Question.get({id: $route.current.params.id});
-    
 }
