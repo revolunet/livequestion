@@ -1,3 +1,4 @@
 *.pyc
 .DS_Store
 app/questions.json
+app/questions.sqlite

@@ -22,7 +22,7 @@
         <tr id='question-{{ question.id }}' ng-repeat="question in questions|filter:themeFilter">
             <td align="center">
                 <div ng-show="questionType!='question'" class="theme">{{ question.theme }}</div>
-                <textarea autofocus ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
+                <textarea autofocus class="{{ questionType }}" ng-model="question.text" ng-model-onblur ng-change="update(question)"></textarea>
             </td>
             <td width="120" align="center">
                 <div ng-show="questionType=='synthèse'">
