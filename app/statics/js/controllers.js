@@ -17,14 +17,24 @@ function HomeCtrl($scope, $location, Question) {
 
 // user page with question and thanks
 function QuestionCtrl($scope, $location, Question) {
-    // submit a new question, display the thanks page
+    // submit a new question, display the thanks page;
     if (!$scope.questionType) $scope.questionType = 'question';
     if (!$scope.questionHelp) $scope.questionHelp = 'Posez votre question';
     if (!$scope.theme) $scope.theme = 'question';
+    var oldData = JSON.parse(localStorage.getItem($scope.questionType)) || null;
+    if (oldData && oldData.text) $scope.newQuestion = oldData.text;
+    if (oldData && oldData.theme) $scope.theme = oldData.theme;
     $scope.submit = function() {
-        question = new Question({text: $scope.newQuestion, theme: $scope.theme});
-        question.$save();
-        $location.path( "/thanks/" + $scope.questionType);
+        $scope.busy = true;
+        var data = {text: $scope.newQuestion, theme: $scope.theme};
+        question = new Question(data);
+        localStorage.setItem($scope.questionType, JSON.stringify(data));
+        question.$save({}, function() {
+            $location.path( "/thanks/" + $scope.questionType);
+        }, function() {
+            alert('Erreur d\'envoi, re-essayez');
+            $scope.busy = false;
+        });
     };
     // go home
     $scope.home = function() {

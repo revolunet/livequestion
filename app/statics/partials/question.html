@@ -10,7 +10,7 @@
 
     <textarea class="whitebordered" ng-model="newQuestion" placeholder="{{ questionHelp }}..."></textarea>
 
-    <button class="btn btn-large btn-darkgrey" ng-click="submit()">
+    <button class="btn btn-large btn-darkgrey" ng-disabled="busy" ng-click="submit()">
         <i class="icon-white icon-ok"></i> ENVOYER
     </button>
 
