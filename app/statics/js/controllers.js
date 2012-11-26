@@ -48,8 +48,8 @@ function SyntheseCtrl($scope, $location, Question) {
     $scope.questionType = 'synthèse';
     $scope.questionHelp = 'Saisissez votre synthèse';
     $scope.themes = [
-        'Concurrence - groupe 1',
-        'Concurrence - groupe 2',
+        'Enquête Groupe 1',
+        'Enquête Groupe 2',
         'Technique',
         'Ressources humaines',
         'Commerce',
