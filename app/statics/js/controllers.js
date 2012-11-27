@@ -22,8 +22,10 @@ function QuestionCtrl($scope, $location, Question) {
     if (!$scope.questionHelp) $scope.questionHelp = 'Posez votre question';
     if (!$scope.theme) $scope.theme = 'question';
     var oldData = JSON.parse(localStorage.getItem($scope.questionType)) || null;
-    if (oldData && oldData.text) $scope.newQuestion = oldData.text;
-    if (oldData && oldData.theme) $scope.theme = oldData.theme;
+    if ($scope.theme != 'question') {
+        if (oldData && oldData.text) $scope.newQuestion = oldData.text;
+        if (oldData && oldData.theme) $scope.theme = oldData.theme;
+    }
     $scope.submit = function() {
         $scope.busy = true;
         var data = {text: $scope.newQuestion, theme: $scope.theme};
